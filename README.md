@@ -5,7 +5,7 @@
 - [Live Site Link](https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-mdshohed).
 
 
-### Project Feature:
+### Project used Library:
 - React Router 
 - React Bootstrap 
 - React-helmet-async
@@ -15,6 +15,7 @@
 - React Firebase Hooks
 - React hooks form 
 - React Toastify
+- React Axios
 
 ## Firebase Hosting: 
 - npm install -g firebase-tools
