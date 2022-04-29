@@ -26,12 +26,12 @@ const Login = () => {
   }
 
   return (
-    <div className='container w-50 '>
+    <div className='container'>
       <PageTitle title={"Login"}></PageTitle>
       <h2>Login in</h2>
       <form onSubmit={handleSignIn} className='d-flex flex-column '>
-        <input className='mb-2' type="text" name="email" id="email" placeholder='Email' required/>
-        <input className='mb-2' type="password" name="password" id="password" placeholder='Password' required/>
+        <input className='mb-2' type="text" name="email" id="email" placeholder='Email' />
+        <input className='mb-2' type="password" name="password" id="password" placeholder='Password'/>
         <p className='text-danger'>{error?.message}</p>
         <input type="submit" value="Login" />
       </form>
