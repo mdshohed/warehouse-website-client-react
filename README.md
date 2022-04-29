@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-[Github Link](https://github.com/facebook/create-react-app).
+[Github Link](https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-mdshohed).
 
 
 ### Project Feature:
@@ -10,7 +10,6 @@
 - Firebase 
 - mongodb
 - heroku
-
 
 ## Firebase Hosting: 
 - npm install -g firebase-tools
