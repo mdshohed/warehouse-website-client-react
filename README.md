@@ -10,6 +10,7 @@
 - Firebase 
 - mongodb
 - heroku
+- React Firebase Hooks
 
 ## Firebase Hosting: 
 - npm install -g firebase-tools
