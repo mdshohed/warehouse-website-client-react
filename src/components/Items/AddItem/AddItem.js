@@ -2,11 +2,11 @@ import PageTitle from '../../Shared/PageTitle/PageTitle';
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 const AddItem = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) =>{
-    
     const url = `http://localhost:5000/products`; 
     fetch(url,{
       method: 'POST', 
@@ -18,9 +18,31 @@ const AddItem = () => {
     .then(res=>res.json())
     .then(data=>{
       toast("successfully added product");
-      data.target.reset(); 
+      
     });  
+    reset(); 
   };
+
+  // const handleAddProducts = event =>{
+  //   event.preventDefault(); 
+  //   const product = {
+  //     itemName: event.target.itemName.value,
+  //     imgLink: event.target.imgLink.value,
+  //     description: event.target.description.value,
+  //     price: event.target.price.value,
+  //     quantity: event.target.quantity.value,
+  //     supplierName: event.target.supplierName.value,
+  //   }
+  //   axios.post('http://localhost:5000/products', product)
+  //   .then(res=>{
+  //     const {data} = res;
+  //     if(data.insertedId){
+  //       toast("successfully added product");
+  //       console.log(data);
+  //       event.target.reset(); 
+  //     }
+  //   })
+  // }
 
   return (
     <div className='container border-2'>

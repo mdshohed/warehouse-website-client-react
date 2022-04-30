@@ -1,8 +1,8 @@
 import React from 'react';
 import useProducts from '../../../Hooks/useProducts';
 import PageTitle from '../../Shared/PageTitle/PageTitle';
-import ManageItems from '../ManageItems/ManageItems';
-import './Manage.css'
+import ManageItems from '../Product/Product';
+import './Products.css'
 
 const Manage = () => {
   const [products] = useProducts();
