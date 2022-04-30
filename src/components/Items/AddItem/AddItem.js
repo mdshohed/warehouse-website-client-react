@@ -7,7 +7,7 @@ import axios from 'axios';
 const AddItem = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) =>{
-    const url = `http://localhost:5000/product`; 
+    const url = `http://localhost:5000/products`; 
     fetch(url,{
       method: 'POST', 
       headers: {

@@ -13,6 +13,7 @@ import Header from './components/Shared/Header/Header';
 import NotFound from './components/Shared/NotFound/NotFound';
 import Product from './components/Products/Products/Products';
 import ProductDetail from './components/Products/ProductDetail/ProductDetail';
+import ManageItem from './components/Items/ManageItem/ManageItem';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
             <ProductDetail></ProductDetail>
           </RequireAuth>
         }></Route>
+        <Route path='/manageitem' element={<ManageItem></ManageItem>}></Route>
         <Route path='/additem' element={<AddItem></AddItem>}></Route>
         <Route path='/myitems' element={<MyItems></MyItems>}></Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
