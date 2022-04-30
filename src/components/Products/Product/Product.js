@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const ManageItems = ({product}) => {
+const Product = ({product}) => {
   const {_id, itemName, imgLink, description, price, quantity} = product;
   const navigate = useNavigate(); 
   
   const navigateToProductDetails = id =>{
-    console.log(id);
     navigate(`/product/${id}`);  
   }
 
@@ -25,4 +24,4 @@ const ManageItems = ({product}) => {
   );
 };
 
-export default ManageItems;
+export default Product;

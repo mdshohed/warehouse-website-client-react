@@ -1,9 +1,8 @@
 import React from 'react';
 import useProducts from '../../../Hooks/useProducts';
 import PageTitle from '../../Shared/PageTitle/PageTitle';
-import Product from '../Product/Product';
 import './Products.css'
-
+import Product from '../components/Products/Product/Product'
 const Manage = () => {
   const [products] = useProducts();
   return (

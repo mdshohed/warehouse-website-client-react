@@ -4,7 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
-import logo from '../../../images/logos/Group 1329.png'
+import logo from '../../../images/logos/logo.png'
 
 const Header = () => {
   const [user] = useAuthState(auth); 
@@ -23,14 +23,14 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/">Home</Nav.Link>
-              <Nav.Link as={Link} to="/">Link</Nav.Link>
+              <Nav.Link as={Link} to="/product">Products</Nav.Link>
               <Nav.Link as={Link} to="/blogs">Blogs</Nav.Link>
             </Nav>
             <Nav>
               {
                 user? 
                   <>
-                    <Nav.Link as={Link} to="/product">Manage Items</Nav.Link>
+                    <Nav.Link as={Link} to="/manageproduct">Manage Items</Nav.Link>
                     <Nav.Link as={Link} to="/additem">Add Item</Nav.Link>
                     <Nav.Link as={Link} to="/myitems">My items</Nav.Link>
                     <Nav.Link as={Link} className="btn btn-primary text-white" onClick={handleSignOut} to="/">Logout</Nav.Link>
