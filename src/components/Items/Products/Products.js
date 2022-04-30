@@ -1,7 +1,7 @@
 import React from 'react';
 import useProducts from '../../../Hooks/useProducts';
 import PageTitle from '../../Shared/PageTitle/PageTitle';
-import ManageItems from '../Product/Product';
+import Product from '../Product/Product';
 import './Products.css'
 
 const Manage = () => {
@@ -12,10 +12,10 @@ const Manage = () => {
       <div className="">
         <div className="product-container">
           {
-            products.map(product=><ManageItems 
+            products.map(product=><Product 
             key={product._id}
             product={product}
-            ></ManageItems>)
+            ></Product>)
           }
         </div>
       </div>

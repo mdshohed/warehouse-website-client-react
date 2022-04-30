@@ -1,6 +1,17 @@
 .App {
   text-align: center;
 }
+#custom-btn{
+  background-color: #00b5f0; 
+  border: 0;
+  padding: 10px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 700;
+}
+#custom-btn:hover{
+  background-color: #018fb1;
+}
 
 .App-logo {
   height: 40vmin;
