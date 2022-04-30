@@ -1,24 +1,53 @@
 import React, { useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import useProductDetails from '../../../Hooks/useProductDetails';
 
 const ProductDetail = () => {
-  const reStockRef = useRef(''); 
   const {productId} = useParams();
-  const [product] = useProductDetails(productId);
-  const {_id, itemName, imgLink, description, price, quantity, supplierName} = product;
+  const [product,setProduct] = useProductDetails(productId);
+  let {_id, itemName, imgLink, description, price, quantity, supplierName} = product;
 
   const handleDelivered = (id) =>{
-    console.log(id); 
+    quantity = parseInt(quantity) + 1;  
+    const updatedProduct = {quantity}; 
+    const url = `http://localhost:5000/product/${id}`; 
+    fetch(url,{
+      method:'PUT', 
+      headers:{
+        'content-type': 'application/json'
+      }, 
+      body: JSON.stringify(updatedProduct)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      alert('users added successfully!!!'); 
+      setProduct(updatedProduct); 
+    }); 
   }
-
   
   const handleRestock = (event) =>{
     event.preventDefault();
-    const reStock = event.target.restock.value; 
-    console.log(reStock); 
+    const reStock = event.target.restock.value;  
     if(reStock.match(/^[0-9]+$/)){
-      console.log(reStock); 
+      console.log(quantity); 
+      quantity = parseInt(reStock) + parseInt(quantity); 
+      const updatedProduct = {
+        quantity
+      }; 
+      const url = `http://localhost:5000/product/${_id}`; 
+      fetch(url,{
+        method:'PUT', 
+        headers:{
+          'content-type': 'application/json'
+        }, 
+        body: JSON.stringify(updatedProduct)
+      })
+      .then(res=>res.json())
+      .then(data=>{
+        alert('users added successfully!!!'); 
+        setProduct(quantity); 
+      }); 
     }
     else {
       alert("Please Give valid Quantity");
@@ -41,7 +70,7 @@ const ProductDetail = () => {
           <div className="">
             <h5>Restock Quantity:</h5> <hr />
             <form onSubmit={handleRestock}>
-              <input ref={reStockRef} className='w-25 p-1' type="number" name="restock" placeholder='0' />
+              <input className='w-25 p-1' type="number" name="restock" placeholder='0' />
               <button className='btn btn-danger'>Restock</button>
             </form>
           </div>

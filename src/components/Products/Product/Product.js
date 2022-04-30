@@ -15,16 +15,14 @@ const Product = ({product}) => {
   }
 
   const handleProductDelete = (id) =>{
-    const proceed = window.confirm('Are you sure you want to this Products'); 
+    const proceed = window.confirm('Are you sure you want to delete this Product'); 
     if(proceed) {
-      console.log('deleting this products', id); 
       const url = `http://localhost:5000/product/${id}`;
       fetch(url,{
         method: 'DELETE'
       })
       .then(res=>res.json())
-      .then(data=>{
-        console.log(data);  
+      .then(data=>{  
         const remaining = products.filter(product=>product._id !== id);
         setProducts(remaining); 
       })

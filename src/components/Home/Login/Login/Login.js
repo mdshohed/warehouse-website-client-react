@@ -16,11 +16,10 @@ const Login = () => {
   ] = useSignInWithEmailAndPassword(auth);
 
   if(user) {
-    console.log(from); 
     navigate(from,{replace:true}); 
   }
 
-  const handleSignIn = async(event) =>{
+  const handleSignIn = async event =>{
     event.preventDefault(); 
     const email = event.target.email.value; 
     const password = event.target.password.value;   
