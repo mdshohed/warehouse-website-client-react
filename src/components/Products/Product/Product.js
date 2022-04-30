@@ -36,7 +36,7 @@ const Product = ({product}) => {
           <img style={{width: '200px'}} src={imgLink} alt="" />
         </div>
         <div className="col-7 col-md-7 col-lg-7">
-          <h3>{itemName}</h3>
+          <h4>{itemName}</h4>
           <p>{description}</p>
           <p><span className='fw-bold'>Price:</span>  {price}</p>
           <p> <span className='fw-bold'>Quantity:</span> {quantity}</p>
@@ -44,7 +44,7 @@ const Product = ({product}) => {
         </div>
       </div>
      <div className="">
-      <button className='btn btn-primary mb-2 w-25 me-3' id='custom-btn' onClick={()=>navigateToProductDetails(_id)}>Stock Update</button>
+      <button className='btn btn-primary mb-2 w-50 me-3' id='custom-btn' onClick={()=>navigateToProductDetails(_id)}>Stock Update</button>
       <button className='btn btn-danger mb-2'  onClick={()=>handleProductDelete(_id)}> <img style={{width:'25px'}} src={Delete} alt="" /> </button>
      </div>
     </div>

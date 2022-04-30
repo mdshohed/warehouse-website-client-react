@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
 import logo from '../../../images/logos/logo.png'
+import plus from '../../../images/logos/plus 1.png'
 
 const Header = () => {
   const [user] = useAuthState(auth); 
@@ -13,8 +14,8 @@ const Header = () => {
     signOut(auth); 
   }
   return (
-    <div>
-      <Navbar bg="light" expand="lg">
+    <div className='mb-3'>
+      <Navbar bg="secondary" expand="lg">
         <Container>
           <Navbar.Brand as={Link} to="/">
             <img style={{height: '50px'}} src={logo} alt="" />
@@ -31,7 +32,7 @@ const Header = () => {
                 user? 
                   <>
                     <Nav.Link as={Link} to="/manageitem">Manage Items</Nav.Link>
-                    <Nav.Link as={Link} to="/additem">Add Item</Nav.Link>
+                    <Nav.Link as={Link} to="/additem"><img className='mb-1 ms-2' style={{width:'20px'}} src={plus} alt="" /> Add Item</Nav.Link>
                     <Nav.Link as={Link} to="/myitems">My items</Nav.Link>
                     <Nav.Link as={Link} className="btn btn-primary text-white" onClick={handleSignOut} to="/">Logout</Nav.Link>
                   {/* <p className='me-3 mt-2 border p-2'>{user?.displayName}</p> */}

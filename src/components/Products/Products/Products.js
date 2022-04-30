@@ -8,7 +8,7 @@ const Products = () => {
   const [products] = useProducts();
   return (
     <div className='container'>
-      <PageTitle title={"Manage Items"}></PageTitle>
+      <PageTitle title={"All Products"}></PageTitle>
       <div className="">
         <div className="product-container">
           {

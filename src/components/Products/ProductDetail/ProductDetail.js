@@ -1,15 +1,20 @@
+import axios from 'axios';
 import React, { useRef } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import auth from '../../../firebase.init';
 import useProductDetails from '../../../Hooks/useProductDetails';
 
 const ProductDetail = () => {
   const {productId} = useParams();
   const [product,setProduct] = useProductDetails(productId);
+  const [user] = useAuthState(auth); 
+
   let {_id, itemName, imgLink, description, price, quantity, supplierName} = product;
 
   const handleDelivered = (id) =>{
-    quantity = parseInt(quantity) + 1;  
+    quantity = parseInt(quantity) - 1;  
     const updatedProduct = {quantity}; 
     const url = `http://localhost:5000/product/${id}`; 
     fetch(url,{
@@ -21,16 +26,33 @@ const ProductDetail = () => {
     })
     .then(res=>res.json())
     .then(data=>{
-      alert('users added successfully!!!'); 
+      // toast('Delivered successfully!!!'); 
       setProduct(updatedProduct); 
+      // window.location.reload();
     }); 
+
+    const myItem = {
+      email: user.email, 
+      itemName: itemName, 
+      imgLink: imgLink, 
+      price: price, 
+      quantity: quantity, 
+      supplierName: supplierName
+    }
+    console.log(myItem); 
+    axios.post('http://localhost:5000/items', myItem)
+    .then(res=>{
+      const {data} = res;
+      if(data.insertedId){
+        toast('Delivered Success!');
+      }
+    })
   }
   
   const handleRestock = (event) =>{
     event.preventDefault();
     const reStock = event.target.restock.value;  
     if(reStock.match(/^[0-9]+$/)){
-      console.log(quantity); 
       quantity = parseInt(reStock) + parseInt(quantity); 
       const updatedProduct = {
         quantity
@@ -45,9 +67,11 @@ const ProductDetail = () => {
       })
       .then(res=>res.json())
       .then(data=>{
-        alert('users added successfully!!!'); 
-        setProduct(quantity); 
+        toast('ReStocked successfully!!!'); 
+        setProduct(updatedProduct);
+        window.location.reload();
       }); 
+       
     }
     else {
       alert("Please Give valid Quantity");
@@ -78,7 +102,9 @@ const ProductDetail = () => {
       </div>
       
       <h5 className='my-5 p-2 bg-primary w-50 mx-auto rounded text-center'><Link className='text-white text-decoration-none' as={Link} to="/product">All Products</Link></h5>
+      <ToastContainer />
     </div>
+    
   );
 };
 
