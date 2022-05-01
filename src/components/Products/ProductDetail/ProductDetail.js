@@ -15,41 +15,47 @@ const ProductDetail = () => {
   let {_id, itemName, imgLink, description, price, quantity, supplierName} = product;
 
   const handleDelivered = (id) =>{
-    quantity = parseInt(quantity) - 1;  
-    const updatedProduct = {
-      quantity
-    }; 
-    const url = `https://salty-escarpment-11127.herokuapp.com/product/${id}`; 
-    fetch(url,{
-      method:'PUT', 
-      headers:{
-        'content-type': 'application/json'
-      }, 
-      body: JSON.stringify(updatedProduct)
-    })
-    .then(res=>res.json())
-    .then(data=>{ 
-      window.location.reload();
-      setProduct(updatedProduct);
-      
-    }); 
+    const currentQuantity = parseInt(quantity);
+    if(currentQuantity>0){
+      quantity = currentQuantity - 1;  
+      const updatedProduct = {
+        quantity
+      }; 
+      const url = `https://salty-escarpment-11127.herokuapp.com/product/${id}`; 
+      fetch(url,{
+        method:'PUT', 
+        headers:{
+          'content-type': 'application/json'
+        }, 
+        body: JSON.stringify(updatedProduct)
+      })
+      .then(res=>res.json())
+      .then(data=>{ 
+        window.location.reload();
+        setProduct(updatedProduct);
+        
+      }); 
 
-    const myItem = {
-      email: user.email, 
-      productId: _id,
-      itemName: itemName, 
-      imgLink: imgLink, 
-      price: price, 
-      quantity: quantity, 
-      supplierName: supplierName
-    } 
-    axios.post('https://salty-escarpment-11127.herokuapp.com/items', myItem)
-    .then(res=>{
-      const {data} = res;
-      if(data.insertedId){
-        alert('Delivered Success!');
-      }
-    })
+      const myItem = {
+        email: user.email, 
+        productId: _id,
+        itemName: itemName, 
+        imgLink: imgLink, 
+        price: price, 
+        quantity: quantity, 
+        supplierName: supplierName
+      } 
+      axios.post('https://salty-escarpment-11127.herokuapp.com/items', myItem)
+      .then(res=>{
+        const {data} = res;
+        if(data.insertedId){
+          alert('Delivered Success!');
+        }
+      })
+    }
+    else {
+      alert("Quantity limit out!"); 
+    }
   }
   
   const handleRestock = (event) =>{

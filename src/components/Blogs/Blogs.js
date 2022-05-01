@@ -7,24 +7,24 @@ const Blogs = () => {
     <div className='container'>
       <PageTitle title={"Blogs"}></PageTitle>
       <div className="">
-        <h2 className=' border-bottom'>Electrics Warehouse Feature Blog</h2>
+        <h2 className=' border-bottom'>Electrics Warehouse Blog</h2>
         <div className=" blogs p-4 my-3">
           <h4>Difference between javascript and nodejs?</h4>
-          <p><span className='fw-bold'>javascript: </span>Authorization determines what resources a user can access. Authorization isn’t visible to or changeable by the user. Authorization always takes place after authentication.</p>
-          <p><span className='fw-bold'>nodejs: </span>Authentication verifies who the user is and an Authentication is visible to and partially changeable by the user.Authentication is the first step of a good identity and access management process.</p>
+          <p><span className='fw-bold'>javascript: </span>Mainly javascript used in frontend development. Javascript is a Scripting language.Basically javascript used on the client-side. It able to add html and DOM </p>
+          <p><span className='fw-bold'>nodejs: </span>Nodejs is a server-side language. We can run Javascript outside the browser with the help of NodeJS. Nodejs does not have capability to add html tags.</p>
           
         </div>
         <div className=" blogs p-4 my-3">
           <h4>When should you use nodejs and when should you use mongodb</h4>
-          <p>Firebase Authentication provides backend services where we can login or register by our email, facebook, github, and so on. </p>
-        </div>
-        <div className=" blogs p-4 my-3">
-          <h4>Differences between sql and nosql databases.</h4>
-          <p>Firebase provide best authentication service. Also, there are many service which firebase provides, most useful of them are firebase database, realtime database, storage drive, hosting, Cloud Messaging, and so no. we can create custom hosting name my mine. for this firebase takes some cost. </p>
+          <p>Nodejs is a server side language which uses javascript on the server to develop backend applications. 
+            When we need to control database then we use nodejs language for backend system. 
+            And mongodb is a database system website where we store documents in a database and perform operations like update, delete or insert. we can easily store our all information in mongodb database. 
+            </p>
         </div>
         <div className="blogs p-4 my-3">
           <h4>What is the purpose of jwt and how does it work</h4>
-          <p>Firebase provide best authentication service. Also, there are many service which firebase provides, most useful of them are firebase database, realtime database, storage drive, hosting, Cloud Messaging, and so no. we can create custom hosting name my mine. for this firebase takes some cost. </p>
+          <p>JWT means json web token. jwt are mainly used for authentication. After a user logging or register in the application, 
+            it will crate a json web token and send it back to the user. Subsequent requests by the user will include the JWT. The token tells the server what routes, services, and resources the user is allowed to access.</p>
         </div>
       </div>
     </div>

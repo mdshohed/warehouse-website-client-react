@@ -22,7 +22,7 @@ const Product = ({product}) => {
     if(!user) {
       navigate('/login'); 
     }
-    if(products.length>6){
+    if(products.length>5){
       const proceed = window.confirm('Are you sure you want to delete this Product'); 
       if(proceed) {
         const url = `https://salty-escarpment-11127.herokuapp.com/product/${id}`;
@@ -43,24 +43,17 @@ const Product = ({product}) => {
   }
 
   return (
-    <div className='container product-card' >
-      <div className="row p-2" style={{height: '300px'}}>
-        <div className="col-5 col-md-5 col-lg-5">
-          <img style={{width: '200px'}} src={imgLink} alt="" />
-        </div>
-        <div className="col-7 col-md-7 col-lg-7">
-          <h4>{itemName}</h4>
-          <p>{description}</p>
-          <p><span className='fw-bold'>Price:</span>  {price}</p>
-          <p> <span className='fw-bold'>Quantity:</span> {quantity}</p>
-          <p><span className='fw-bold'>Supplier Name:</span> {supplierName}</p>
-        </div>
-      </div>
-     <div className="">
-      <button className='btn btn-primary mb-2 w-50 me-3' id='custom-btn' onClick={()=>navigateToProductDetails(_id)}>Stock Update</button>
-      <button className='btn btn-danger mb-2'  onClick={()=>handleProductDelete(_id)}> <img style={{width:'25px'}} src={Delete} alt="" /> </button>
-     </div>
-    </div>
+    // <tbody>
+      <tr>
+        <td className='text-center '><img src={imgLink} style={{width:'100px'}} alt="" /></td>
+        <td className='text-center '>{itemName}</td>
+        <td className='text-center '>{description}</td>
+        <td className='text-center '>{price}</td>
+        <td className='text-center '>{quantity}</td>
+        <td className='text-center '><button className='btn btn-primary' id='custom-btn' onClick={()=>navigateToProductDetails(_id)}>Stock Update</button></td>
+        <td className='text-center '><button className='btn btn-danger'  onClick={()=>handleProductDelete(_id)}> <img style={{width:'25px'}} src={Delete} alt="" /> </button></td>
+      </tr>
+    // </tbody>
   );
 };
 

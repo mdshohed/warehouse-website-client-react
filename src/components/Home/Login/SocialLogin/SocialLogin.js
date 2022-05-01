@@ -31,6 +31,8 @@ const SocialLogin = () => {
   }
 
   if(user || user2) {
+    console.log(user); 
+    console.log(user2); 
     navigate('/'); 
   }
   return (

@@ -12,6 +12,9 @@
 #custom-btn:hover{
   background-color: #018fb1;
 }
+.main-body{
+  height: 100vh;
+}
 
 .App-logo {
   height: 40vmin;

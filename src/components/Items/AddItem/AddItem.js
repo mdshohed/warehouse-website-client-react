@@ -2,9 +2,11 @@ import PageTitle from '../../Shared/PageTitle/PageTitle';
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import product from '../../../images/logos/product.png'
 
 const AddItem = () => {
+  const navigate = useNavigate(); 
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) =>{
     const url = `https://salty-escarpment-11127.herokuapp.com/products`; 
@@ -22,33 +24,19 @@ const AddItem = () => {
     reset(); 
   };
 
-  // const handleAddProducts = event =>{
-  //   event.preventDefault(); 
-  //   const product = {
-  //     itemName: event.target.itemName.value,
-  //     imgLink: event.target.imgLink.value,
-  //     description: event.target.description.value,
-  //     price: event.target.price.value,
-  //     quantity: event.target.quantity.value,
-  //     supplierName: event.target.supplierName.value,
-  //   }
-  //   axios.post('https://salty-escarpment-11127.herokuapp.com/products', product)
-  //   .then(res=>{
-  //     const {data} = res;
-  //     if(data.insertedId){
-  //       toast("successfully added product");
-  //       console.log(data);
-  //       event.target.reset(); 
-  //     }
-  //   })
-  // }
+  const navigateToAllProducts = () =>{
+    navigate('/product'); 
+  }
 
   return (
     <div className='container border-2'>
       <PageTitle title={"Add Product"}></PageTitle>
       <div className="">
-        <h4 className='mt-5'>Add Items</h4><hr />
-        <form onSubmit={handleSubmit(onSubmit)} className="d-flex flex-column w-50 mx-auto">
+      <div className="product-title">
+        <h3 className='text-info'>Add Items</h3>
+        <button onClick={navigateToAllProducts} className='btn btn-info me-5'><img className='mb-1 me-2' style={{width:'20px'}} src={product} alt="" />All Product</button>
+      </div> <hr />
+        <form onSubmit={handleSubmit(onSubmit)} className="d-flex flex-column w-50 mx-auto border p-5 rounded">
           <input className='mb-3 p-1' type="text" name="itemName" placeholder='Item Name' {...register("itemName", { required: true })}/>
           <input className='mb-3 p-1' type="text" name="imgLink" placeholder='Image URL' {...register("imgLink", { required: true })}/>
           <input className='mb-3 p-1' type="textarea" name="description" placeholder='Product Description' {...register("description", { required: true })}/>

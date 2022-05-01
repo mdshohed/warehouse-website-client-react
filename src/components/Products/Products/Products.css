@@ -1,11 +1,17 @@
 .product-container{
   display: grid;
   grid-template-columns: repeat(2,1fr);
-  grid-gap: 20px;
+  grid-gap: 10px;
 }
 .product-title{
   text-align: center;
   color: lightblue;
+}
+.product-title{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 @media only screen and (max-width:992px) {

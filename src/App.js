@@ -18,7 +18,8 @@ import ManageItem from './components/Items/ManageItem/ManageItem';
 function App() {
 
   return (
-    <div className="">
+    // style={{background: "#EAEDED"}}
+    <div className="main-body" style={{background: "#EAEDED"}} >
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
