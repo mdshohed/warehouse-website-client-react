@@ -14,6 +14,7 @@ import NotFound from './components/Shared/NotFound/NotFound';
 import Product from './components/Products/Products/Products';
 import ProductDetail from './components/Products/ProductDetail/ProductDetail';
 import ManageItem from './components/Items/ManageItem/ManageItem';
+import Footer from './components/Shared/Footer/Footer';
 
 function App() {
 
@@ -49,6 +50,7 @@ function App() {
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
+      <Footer></Footer>
       <ToastContainer />
     </div>
   );

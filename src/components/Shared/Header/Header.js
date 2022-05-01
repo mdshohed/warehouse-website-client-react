@@ -31,7 +31,7 @@ const Header = () => {
               <Nav.Link as={Link} to="/">Home</Nav.Link>
               <Nav.Link as={Link} to="/product"><img className='mb-1 me-1' style={{width:'20px'}} src={product} alt="" />Products</Nav.Link>
               <Nav.Link as={Link} to="/blogs">Blogs</Nav.Link>
-              <Nav.Link as={Link} to="/blogs">About</Nav.Link>
+              {/* <Nav.Link as={Link} to="/blogs">About</Nav.Link> */}
             </Nav>
             <Nav>
               {

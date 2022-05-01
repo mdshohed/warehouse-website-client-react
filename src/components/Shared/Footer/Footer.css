@@ -1,0 +1,22 @@
+
+.main-footer{
+  background-color: #1c2430;
+  padding: 20px;
+  position: sticky;
+  top: 100%;
+
+}
+.footer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.our-service a{
+  text-decoration: none;
+  color: #fff;
+  /* #162039 */
+}
+.border-line{
+  border: .5px solid white;
+  
+}
