@@ -31,9 +31,12 @@ const Login = () => {
     <Loading></Loading>
   }
   
-  if(token) {
-    if(user) navigate('/');  
-    else navigate(from,{replace:true}); 
+  if(token) { 
+    navigate(from,{replace:true}); 
+  }
+
+  if(user) {
+    navigate('/'); 
   }
 
   const handleSignIn = async event =>{

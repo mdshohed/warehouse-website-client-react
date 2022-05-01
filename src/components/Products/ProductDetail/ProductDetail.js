@@ -30,7 +30,8 @@ const ProductDetail = () => {
     .then(res=>res.json())
     .then(data=>{ 
       window.location.reload();
-      setProduct(updatedProduct); 
+      setProduct(updatedProduct);
+      
     }); 
 
     const myItem = {
@@ -41,8 +42,7 @@ const ProductDetail = () => {
       price: price, 
       quantity: quantity, 
       supplierName: supplierName
-    }
-    console.log(myItem); 
+    } 
     axios.post('https://salty-escarpment-11127.herokuapp.com/items', myItem)
     .then(res=>{
       const {data} = res;
