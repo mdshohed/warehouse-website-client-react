@@ -19,7 +19,7 @@ const ProductDetail = () => {
     const updatedProduct = {
       quantity
     }; 
-    const url = `http://localhost:5000/product/${id}`; 
+    const url = `https://salty-escarpment-11127.herokuapp.com/product/${id}`; 
     fetch(url,{
       method:'PUT', 
       headers:{
@@ -43,7 +43,7 @@ const ProductDetail = () => {
       supplierName: supplierName
     }
     console.log(myItem); 
-    axios.post('http://localhost:5000/items', myItem)
+    axios.post('https://salty-escarpment-11127.herokuapp.com/items', myItem)
     .then(res=>{
       const {data} = res;
       if(data.insertedId){
@@ -60,7 +60,7 @@ const ProductDetail = () => {
       const updatedProduct = {
         quantity
       }; 
-      const url = `http://localhost:5000/product/${_id}`; 
+      const url = `https://salty-escarpment-11127.herokuapp.com/product/${_id}`; 
       fetch(url,{
         method:'PUT', 
         headers:{

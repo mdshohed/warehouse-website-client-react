@@ -25,7 +25,7 @@ const Product = ({product}) => {
     else{
       const proceed = window.confirm('Are you sure you want to delete this Product'); 
       if(proceed) {
-        const url = `http://localhost:5000/product/${id}`;
+        const url = `https://salty-escarpment-11127.herokuapp.com/product/${id}`;
         fetch(url,{
           method: 'DELETE'
         })

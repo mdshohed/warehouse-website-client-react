@@ -7,7 +7,7 @@ import axios from 'axios';
 const AddItem = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) =>{
-    const url = `http://localhost:5000/products`; 
+    const url = `https://salty-escarpment-11127.herokuapp.com/products`; 
     fetch(url,{
       method: 'POST', 
       headers: {
@@ -32,7 +32,7 @@ const AddItem = () => {
   //     quantity: event.target.quantity.value,
   //     supplierName: event.target.supplierName.value,
   //   }
-  //   axios.post('http://localhost:5000/products', product)
+  //   axios.post('https://salty-escarpment-11127.herokuapp.com/products', product)
   //   .then(res=>{
   //     const {data} = res;
   //     if(data.insertedId){

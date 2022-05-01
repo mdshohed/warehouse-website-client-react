@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import PageTitle from '../../../Shared/PageTitle/PageTitle';
-import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../../firebase.init';
 import axios from 'axios';
@@ -8,6 +8,7 @@ import Loading from '../../../Shared/Loading/Loading';
 import { Spinner } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import useToken from '../../../../Hooks/useToken';
 
 const Login = () => {
   const [user1] = useAuthState(auth); 
@@ -15,7 +16,7 @@ const Login = () => {
   const passwordRef = useRef(''); 
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location?.state?.from?.pathname || '/';
+  const from = location.state?.from?.pathname || '/';
 
   const [
     signInWithEmailAndPassword,
@@ -23,10 +24,16 @@ const Login = () => {
     loading,
     error,
   ] = useSignInWithEmailAndPassword(auth);
+  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+  const [token] = useToken(user1 || user); 
  
+  if(loading || sending) {
+    <Loading></Loading>
+  }
   
-  if(user || user1) {
-    navigate(from,{replace:true}); 
+  if(token) {
+    if(user) navigate('/');  
+    else navigate(from,{replace:true}); 
   }
 
   const handleSignIn = async event =>{
@@ -34,14 +41,25 @@ const Login = () => {
     const email = emailRef.current.value; 
     const password = passwordRef.current.value;   
     await signInWithEmailAndPassword(email, password);
-    const {data} = await axios.post('http://localhost:5000/login', {email}); 
-    localStorage.setItem('accessToken', data.accessToken);  
+    // const {data} = await axios.post('https://salty-escarpment-11127.herokuapp.com/login', {email}); 
+    // localStorage.setItem('accessToken', data.accessToken);  
+  }
+
+  const resetPassword = async()=>{
+    const email = emailRef.current.value;
+    if(email) {
+      await sendPasswordResetEmail(email);
+      alert('Send email'); 
+    }
+    else {
+      alert('Please inter your email address'); 
+    }
   }
 
   return (
     <div className='container w-50 p-5 border rounded'>
       <PageTitle title={"Login"}></PageTitle>
-      <h2 style={{color: 'rgb(0, 104, 74)'}} classNamec=''>Log in to your account</h2>
+      <h2 style={{color: 'rgb(0, 104, 74)'}} className=''>Log in to your account</h2>
       <form onSubmit={handleSignIn} className='d-flex flex-column '>
         <input ref={emailRef} className='mb-3 p-2' type="text" name="email" id="email" placeholder='Email' required/>
         <input ref={passwordRef} className='mb-3 p-2' type="password" name="password" id="password" placeholder='Password' required/>
@@ -52,7 +70,7 @@ const Login = () => {
         <input className='mt-3 ' id="custom-btn" type="submit" value="Login" />
       </form>
       <p className='p-2 text-center border my-3'>New to WareHouse? <Link className='text-decoration-none' as={Link} to='/register'>Create an account.</Link></p>
-      <p> <Link className='text-decoration-none' as={Link} to='/login'>Forgot Password?</Link></p>
+      <p> <button className='btn btn-white text-primary' onClick={resetPassword} as={Link} to='/login'>Forgot Password?</button></p>
       <SocialLogin></SocialLogin>
     </div>
   );

@@ -12,16 +12,11 @@ import {signOut} from 'firebase/auth';
 const MyItems = () => {
   const [items, setItems] = useState([]);
   const [user] = useAuthState(auth);
-  
-  let frequency = items =>{
-    items.filter((item, index)=> items.indexOf(item) !== index )
-  }
-  console.log(frequency); 
 
   useEffect(()=>{
     const getItems = async()=>{
       const email = user?.email; 
-      const url = `http://localhost:5000/items?email=${email}`; 
+      const url = `https://salty-escarpment-11127.herokuapp.com/items?email=${email}`; 
       
       try{
         const {data} = await axios.get(url,{

@@ -3,23 +3,25 @@ import { Spinner } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../../firebase.init';
+import useToken from '../../../../Hooks/useToken';
 import Loading from '../../../Shared/Loading/Loading';
 import PageTitle from '../../../Shared/PageTitle/PageTitle';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 
 const Register = () => {
-  const nevigate = useNavigate();  
+  const navigate = useNavigate();  
   const [
     createUserWithEmailAndPassword,
     user,
     loading,
     error,
-  ] = useCreateUserWithEmailAndPassword(auth);
+  ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification:true});
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  const [token] = useToken(user); 
 
-  if(user) {
-    nevigate('/'); 
+  if(token) {
+    navigate('/'); 
   }
 
   const handleRegister = async(event)=>{
