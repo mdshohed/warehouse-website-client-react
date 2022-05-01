@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Product.css'; 
-import Delete from '../../../images/logos/trash-2 9.png'; 
+import Delete from '../../../images/logos/delete.png'; 
 import useProducts from '../../../Hooks/useProducts';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';

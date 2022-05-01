@@ -1,8 +1,11 @@
 import React from 'react';
+import { Spinner } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../../firebase.init';
+import Loading from '../../../Shared/Loading/Loading';
 import PageTitle from '../../../Shared/PageTitle/PageTitle';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 
 const Register = () => {
@@ -29,17 +32,21 @@ const Register = () => {
   }
 
   return (
-    <div className='container'>
+    <div className='container w-50 border rounded p-5'>
       <PageTitle title={"Registration"}></PageTitle>
-      <h2>Sign Up</h2>
+      <h2 style={{color: 'rgb(0, 104, 74)'}} >Create your account</h2>
       <form onSubmit={handleRegister} className="d-flex flex-column ">
-        <input className='mb-2' type="text" name="name" placeholder='Name' />
-        <input className='mb-2' type="email" name="email" placeholder='Email' />
-        <input className='mb-2' type="password" name="password" placeholder='Password' id="" />
+        <input className='mb-3 p-2' type="text" name="name" placeholder='Name' required/>
+        <input className='mb-3 p-2' type="email" name="email" placeholder='Email' required/>
+        <input className='mb-3 p-2' type="password" name="password" placeholder='Password' id="" required/>
         <p className='text-danger'>{error?.message}</p>
-        <input type="submit" value="Register" />
+        {
+          loading && <Spinner className='mx-auto' animation='border' variant='info'></Spinner>
+        }
+        <input id="custom-btn" className='mt-3' type="submit" value="Register" />
       </form>
-      <p>Already Register? <Link className='text-decoration-none' as={Link} to='/login'>Click here</Link></p>
+      <p className='p-2 text-center border my-3'>Have an account? <Link className='text-decoration-none' as={Link} to='/login'>Log in now</Link></p>
+      <SocialLogin></SocialLogin>
     </div>
   );
 };
