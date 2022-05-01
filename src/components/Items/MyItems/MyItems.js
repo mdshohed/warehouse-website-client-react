@@ -12,6 +12,11 @@ import {signOut} from 'firebase/auth';
 const MyItems = () => {
   const [items, setItems] = useState([]);
   const [user] = useAuthState(auth);
+  
+  let frequency = items =>{
+    items.filter((item, index)=> items.indexOf(item) !== index )
+  }
+  console.log(frequency); 
 
   useEffect(()=>{
     const getItems = async()=>{
@@ -43,7 +48,7 @@ const MyItems = () => {
       <div className="product-container">
       {
         items.map(item=><MyItem 
-        key={items._id}
+        key={item._id}
         item={item}
         ></MyItem>)
       }

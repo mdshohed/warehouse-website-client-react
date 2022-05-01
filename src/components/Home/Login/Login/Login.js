@@ -1,11 +1,15 @@
 import React, { useRef } from 'react';
 import PageTitle from '../../../Shared/PageTitle/PageTitle';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../../firebase.init';
 import axios from 'axios';
+import Loading from '../../../Shared/Loading/Loading';
+import { Spinner } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 
 const Login = () => {
+  const [user1] = useAuthState(auth); 
   const emailRef = useRef(''); 
   const passwordRef = useRef(''); 
   const navigate = useNavigate();
@@ -20,7 +24,7 @@ const Login = () => {
   ] = useSignInWithEmailAndPassword(auth);
  
   
-  if(user) {
+  if(user || user1) {
     navigate(from,{replace:true}); 
   }
 
@@ -41,9 +45,14 @@ const Login = () => {
         <input ref={emailRef} className='mb-2' type="text" name="email" id="email" placeholder='Email' />
         <input ref={passwordRef} className='mb-2' type="password" name="password" id="password" placeholder='Password'/>
         <p className='text-danger'>{error?.message}</p>
-        <input type="submit" value="Login" />
+        {
+          
+          loading && <Spinner className='mx-auto' animation='border' variant='info'></Spinner>
+          
+        }
+        <input className='mt-3' type="submit" value="Login" />
       </form>
-      <p>New to Electronics WareHouse? <Link as={Link} to='/register'>Please Register</Link></p>
+      <p>New to Electronics WareHouse? <Link className='text-decoration-none' as={Link} to='/register'>Please Register</Link></p>
     </div>
   );
 };

@@ -39,7 +39,7 @@ const Register = () => {
         <p className='text-danger'>{error?.message}</p>
         <input type="submit" value="Register" />
       </form>
-      <p>Already Register? <Link as={Link} to='/login'>Click here</Link></p>
+      <p>Already Register? <Link className='text-decoration-none' as={Link} to='/login'>Click here</Link></p>
     </div>
   );
 };

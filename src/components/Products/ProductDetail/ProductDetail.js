@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useRef } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import auth from '../../../firebase.init';
 import useProductDetails from '../../../Hooks/useProductDetails';
@@ -10,12 +10,15 @@ const ProductDetail = () => {
   const {productId} = useParams();
   const [product,setProduct] = useProductDetails(productId);
   const [user] = useAuthState(auth); 
+  const navigate = useNavigate(); 
 
   let {_id, itemName, imgLink, description, price, quantity, supplierName} = product;
 
   const handleDelivered = (id) =>{
     quantity = parseInt(quantity) - 1;  
-    const updatedProduct = {quantity}; 
+    const updatedProduct = {
+      quantity
+    }; 
     const url = `http://localhost:5000/product/${id}`; 
     fetch(url,{
       method:'PUT', 
@@ -25,14 +28,14 @@ const ProductDetail = () => {
       body: JSON.stringify(updatedProduct)
     })
     .then(res=>res.json())
-    .then(data=>{
-      // toast('Delivered successfully!!!'); 
+    .then(data=>{ 
+      window.location.reload();
       setProduct(updatedProduct); 
-      // window.location.reload();
     }); 
 
     const myItem = {
       email: user.email, 
+      productId: _id,
       itemName: itemName, 
       imgLink: imgLink, 
       price: price, 
@@ -44,14 +47,14 @@ const ProductDetail = () => {
     .then(res=>{
       const {data} = res;
       if(data.insertedId){
-        toast('Delivered Success!');
+        alert('Delivered Success!');
       }
     })
   }
   
   const handleRestock = (event) =>{
-    event.preventDefault();
     const reStock = event.target.restock.value;  
+    event.preventDefault();
     if(reStock.match(/^[0-9]+$/)){
       quantity = parseInt(reStock) + parseInt(quantity); 
       const updatedProduct = {
@@ -66,10 +69,10 @@ const ProductDetail = () => {
         body: JSON.stringify(updatedProduct)
       })
       .then(res=>res.json())
-      .then(data=>{
-        toast('ReStocked successfully!!!'); 
+      .then(data=>{ 
         setProduct(updatedProduct);
         window.location.reload();
+        alert('ReStocked successfully!!!'); 
       }); 
        
     }

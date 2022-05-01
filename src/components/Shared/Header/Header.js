@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
 import logo from '../../../images/logos/logo.png'
@@ -9,9 +9,12 @@ import plus from '../../../images/logos/plus 1.png'
 
 const Header = () => {
   const [user] = useAuthState(auth); 
+  const navigate = useNavigate(); 
 
   const handleSignOut = () =>{
+    navigate('/login'); 
     signOut(auth); 
+      
   }
   return (
     <div className='mb-3'>
@@ -38,7 +41,7 @@ const Header = () => {
               }
               {
                 user? 
-                  <Nav.Link as={Link} className="btn btn-primary text-white" onClick={handleSignOut} to="/">Logout</Nav.Link>
+                  <Nav.Link as={Link} className="btn btn-primary text-white" onClick={handleSignOut} to="/login">Logout</Nav.Link>
                   :
                   <>
                     <Nav.Link as={Link} to="/register">Registration</Nav.Link>
