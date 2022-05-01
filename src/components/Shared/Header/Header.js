@@ -28,15 +28,17 @@ const Header = () => {
               <Nav.Link as={Link} to="/blogs">Blogs</Nav.Link>
             </Nav>
             <Nav>
+              <Nav.Link as={Link} to="/blogs">About</Nav.Link>
+              {
+                user && <>
+                  <Nav.Link as={Link} to="/manageitem">Manage Items</Nav.Link>
+                  <Nav.Link as={Link} to="/additem"><img className='mb-1 ms-2' style={{width:'20px'}} src={plus} alt="" /> Add Item</Nav.Link>
+                  <Nav.Link as={Link} to="/myitems">My items</Nav.Link>
+                </>
+              }
               {
                 user? 
-                  <>
-                    <Nav.Link as={Link} to="/manageitem">Manage Items</Nav.Link>
-                    <Nav.Link as={Link} to="/additem"><img className='mb-1 ms-2' style={{width:'20px'}} src={plus} alt="" /> Add Item</Nav.Link>
-                    <Nav.Link as={Link} to="/myitems">My items</Nav.Link>
-                    <Nav.Link as={Link} className="btn btn-primary text-white" onClick={handleSignOut} to="/">Logout</Nav.Link>
-                  {/* <p className='me-3 mt-2 border p-2'>{user?.displayName}</p> */}
-                  </>
+                  <Nav.Link as={Link} className="btn btn-primary text-white" onClick={handleSignOut} to="/">Logout</Nav.Link>
                   :
                   <>
                     <Nav.Link as={Link} to="/register">Registration</Nav.Link>

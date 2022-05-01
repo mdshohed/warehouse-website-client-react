@@ -16,6 +16,7 @@
 - React hooks form 
 - React Toastify
 - React Axios
+- jsonwebtoken
 
 ## Firebase Hosting: 
 - npm install -g firebase-tools
