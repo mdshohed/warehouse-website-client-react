@@ -6,7 +6,9 @@ import auth from '../../../firebase.init';
 import PageTitle from '../../Shared/PageTitle/PageTitle';
 import MyItem from '../MyItem/MyItem';
 import {signOut} from 'firebase/auth'; 
-// import axiosPrivate from './../../api/axiosPrivate';
+import { Table } from 'react-bootstrap';
+import Delete from '../../../images/logos/delete.png'; 
+import { toast } from 'react-toastify';
 
 
 const MyItems = () => {
@@ -36,18 +38,50 @@ const MyItems = () => {
     getItems(); 
   },[user]); 
 
+  const handleItemDelete =(id) =>{
+    const proceed = window.confirm('Are you sure you want to delete this Product'); 
+    if(proceed) {
+      const url = `https://salty-escarpment-11127.herokuapp.com/items/${id}`;
+      fetch(url,{
+        method: 'DELETE'
+      })
+      .then(res=>res.json())
+      .then(data=>{  
+        toast('Successfully deleted'); 
+        const remaining = items.filter(item=>item._id !== id);
+        setItems(remaining); 
+      })
+    }  
+  }
+
   return (
     <div className='container'>
       <PageTitle title={"My Products"}></PageTitle>
-      <h5>My Products: {items.length}</h5>
-      <div className="product-container">
-      {
-        items.map(item=><MyItem 
-        key={item._id}
-        item={item}
-        ></MyItem>)
-      }
-      </div>
+      <h5>Delivered Product List: {items.length}</h5>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th className='text-center'>Image</th>
+            <th className='text-center'>Name</th>
+            <th className='text-center'>Price</th>
+            <th className='text-center'>Quantity</th>
+            <th className='text-center'>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            items.map(item=>
+            <tr>
+              <td className='text-center'><img src={item.imgLink} style={{width:'100px'}} alt="" /></td>
+              <td className='text-center'>{item.itemName}</td>
+              <td className='text-center'>{item.price}</td>
+              <td className='text-center'>{item.quantity}</td>
+              <td className='text-center'> <button className='btn btn-danger px-3'  onClick={()=>handleItemDelete(item._id)}> <img style={{width:'25px'}} src={Delete} alt="" /> </button></td>
+            </tr>
+            )
+          }
+        </tbody>
+      </Table>
     </div>
   );
 };

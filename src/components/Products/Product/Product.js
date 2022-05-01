@@ -22,7 +22,7 @@ const Product = ({product}) => {
     if(!user) {
       navigate('/login'); 
     }
-    else{
+    if(products.length>6){
       const proceed = window.confirm('Are you sure you want to delete this Product'); 
       if(proceed) {
         const url = `https://salty-escarpment-11127.herokuapp.com/product/${id}`;
@@ -36,6 +36,9 @@ const Product = ({product}) => {
           setProducts(remaining); 
         })
       } 
+    }
+    else{
+      alert('At least 6 Product will have in warehouse'); 
     }
   }
 

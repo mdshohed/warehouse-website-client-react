@@ -30,6 +30,9 @@ const SocialLogin = () => {
     navigate(from, {replace: true}); 
   }
 
+  if(user || user2) {
+    navigate('/'); 
+  }
   return (
     <div>
        <div className='d-flex align-items-center' >
