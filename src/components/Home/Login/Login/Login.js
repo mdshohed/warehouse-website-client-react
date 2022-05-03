@@ -3,10 +3,8 @@ import PageTitle from '../../../Shared/PageTitle/PageTitle';
 import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../../firebase.init';
-import axios from 'axios';
 import Loading from '../../../Shared/Loading/Loading';
 import { Spinner } from 'react-bootstrap';
-import { toast } from 'react-toastify';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import useToken from '../../../../Hooks/useToken';
 
@@ -35,9 +33,9 @@ const Login = () => {
     navigate(from,{replace:true}); 
   }
 
-  if(user) {
-    navigate('/'); 
-  }
+  // if(user) {
+  //   navigate('/'); 
+  // }
 
   const handleSignIn = async event =>{
     event.preventDefault(); 

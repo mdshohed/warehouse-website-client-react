@@ -2,7 +2,7 @@
 
 - [Github Link](https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-mdshohed).
 
-- [Live Site Link](https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-mdshohed).
+- [Live Site Link](https://electronicswarehouse-2078b.web.app/).
 
 
 ### Project used Library:

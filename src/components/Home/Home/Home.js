@@ -7,6 +7,7 @@ import useProducts from '../../../Hooks/useProducts';
 import { useNavigate } from 'react-router-dom';
 import Banner from '../Banner/Banner'; 
 import Contact from '../Contact/Contact';
+import WareHouseSuccess from '../WareHoueSuccess/WareHouseSuccess';
 
 const Home = () => {
   const [products, sertProducts] = useProducts(); 
@@ -54,6 +55,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <WareHouseSuccess></WareHouseSuccess>
       <Contact></Contact>
     </div>
   );

@@ -10,7 +10,6 @@ const ProductDetail = () => {
   const {productId} = useParams();
   const [product,setProduct] = useProductDetails(productId);
   const [user] = useAuthState(auth); 
-  const navigate = useNavigate(); 
 
   let {_id, itemName, imgLink, description, price, quantity, supplierName} = product;
 

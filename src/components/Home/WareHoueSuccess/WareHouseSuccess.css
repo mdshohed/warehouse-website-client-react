@@ -1,0 +1,26 @@
+.success{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 10px;
+  padding: 10px;
+}
+.success-card{
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 20px;
+  margin: 10px;
+}
+.success-number h4 {
+  padding-top: 5px;
+}
+.success-number h4,h5{
+  color: #fff; 
+  text-align: center;
+}
+@media screen and (max-width:992px) {
+  .success{
+    grid-template-columns: repeat(1,1fr);
+  }
+}
