@@ -17,7 +17,7 @@ const WareHouseSuccess = () => {
                 <img style={{width:'70px'}} src={profits} alt="" />
               </div>
               <div className="success-number">
-                <h4 className=''>$<CountUp delay={2} end={234323} />+</h4> 
+                <h4 className=''>$<CountUp duration={3} end={234323} />+</h4> 
                 <h5>Total Profits</h5>
               </div>
             </div>
@@ -28,7 +28,7 @@ const WareHouseSuccess = () => {
                 <img style={{width:'70px'}} src={member} alt="" />
               </div>
               <div className="success-number">
-                <h4 className=''>$<CountUp delay={2} end={100} />+</h4> 
+                <h4 className=''>$<CountUp duration={3} end={100} />+</h4> 
                 <h5>Membership</h5>
               </div>
             </div>
@@ -39,7 +39,7 @@ const WareHouseSuccess = () => {
                 <img style={{width:'70px'}} src={delivered} alt="" />
               </div>
               <div className="success-number">
-                <h4 className=''>$<CountUp delay={2} end={36000} />+</h4> 
+                <h4 className=''>$<CountUp duration={3} end={36000} />+</h4> 
                 <h5>Successfully delivered</h5>
               </div>
             </div>
