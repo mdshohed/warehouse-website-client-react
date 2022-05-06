@@ -9,13 +9,13 @@ const EmailVerification = () => {
   const [sendEmailVerification] = useSendEmailVerification(auth);
   return (
     <div className="">
-      <div className="text-center">
-      <h3 className='text-danger'>Your Email is not verified!!</h3>
-      <h5 className='text-success'> please verify</h5>
-      <button className='btn btn-primary' onClick={async () => {
+      <div className="text-center mt-5">
+      <h3 className='text-'>Your Email is not verified!!</h3>
+      <h5 className='text-success'>Please click verification button again</h5>
+      <button className='btn btn-danger' onClick={async () => {
           await sendEmailVerification();
           toast('Sent email');
-        }}>send Verification email Again</button>
+        }}>send Again</button>
       <ToastContainer></ToastContainer>
     </div>
     </div>

@@ -29,8 +29,8 @@ const MyItems = () => {
       }
       catch(error){
         if(error.response.status===401 || error.response.status===403){
-          // signOut(auth); 
-          // Navigate('/login'); 
+          signOut(auth); 
+          Navigate('/login'); 
         }
       }
     }

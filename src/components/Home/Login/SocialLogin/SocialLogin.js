@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../../firebase.init';
 import google from '../../../../images/social/google.png'; 
 import github from '../../../../images/social/github.png'; 
-import facebook from '../../../../images/social/facebook1.png'; 
+import facebook from '../../../../images/social/facebook.png'; 
 import './SocialLogin.css'
 import Loading from '../../../Shared/Loading/Loading';
 import useToken from '../../../../Hooks/useToken';
