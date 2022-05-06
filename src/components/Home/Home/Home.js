@@ -55,7 +55,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <WareHouseSuccess></WareHouseSuccess>
+      {/* <WareHouseSuccess></WareHouseSuccess> */}
       <Contact></Contact>
     </div>
   );

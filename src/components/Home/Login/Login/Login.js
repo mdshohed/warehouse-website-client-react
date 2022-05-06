@@ -7,14 +7,15 @@ import Loading from '../../../Shared/Loading/Loading';
 import { Spinner } from 'react-bootstrap';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import useToken from '../../../../Hooks/useToken';
+import axios from 'axios';
 
 const Login = () => {
-  const [user1] = useAuthState(auth); 
+  // const [user1] = useAuthState(auth); 
   const emailRef = useRef(''); 
   const passwordRef = useRef(''); 
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || '/';
+  const from = location.state?.from?.pathname || '/'; 
 
   const [
     signInWithEmailAndPassword,
@@ -23,7 +24,7 @@ const Login = () => {
     error,
   ] = useSignInWithEmailAndPassword(auth);
   const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
-  const [token] = useToken(user1 || user); 
+  const [token] = useToken(user); 
  
   if(loading || sending) {
     <Loading></Loading>
@@ -42,8 +43,8 @@ const Login = () => {
     const email = emailRef.current.value; 
     const password = passwordRef.current.value;   
     await signInWithEmailAndPassword(email, password);
-    // const {data} = await axios.post('https://salty-escarpment-11127.herokuapp.com/login', {email}); 
-    // localStorage.setItem('accessToken', data.accessToken);  
+    const {data} = await axios.post('https://salty-escarpment-11127.herokuapp.com/login', {email}); 
+    localStorage.setItem('accessToken', data.accessToken);  
   }
 
   const resetPassword = async()=>{
