@@ -6,6 +6,7 @@ import useProducts from '../../../Hooks/useProducts';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-bootstrap';
 
 
 const Product = ({product}) => {
@@ -31,9 +32,10 @@ const Product = ({product}) => {
         })
         .then(res=>res.json())
         .then(data=>{  
-          toast('Successfully deleted'); 
+          
           const remaining = products.filter(product=>product._id !== id);
           setProducts(remaining); 
+          toast('Successfully deleted'); 
         })
       } 
     }
@@ -43,7 +45,6 @@ const Product = ({product}) => {
   }
 
   return (
-    // <tbody>
       <tr>
         <td className='text-center '><img src={imgLink} style={{width:'100px'}} alt="" /></td>
         <td className='text-center '>{itemName}</td>
@@ -53,7 +54,6 @@ const Product = ({product}) => {
         <td className='text-center '><button className='btn btn-primary' id='custom-btn' onClick={()=>navigateToProductDetails(_id)}>Stock Update</button></td>
         <td className='text-center '><button className='btn btn-danger'  onClick={()=>handleProductDelete(_id)}> <img style={{width:'25px'}} src={Delete} alt="" /> </button></td>
       </tr>
-    // </tbody>
   );
 };
 

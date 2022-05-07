@@ -26,10 +26,10 @@ const Home = () => {
       <div className="container">
         <Banner></Banner>
         <div className="">
-          <h3 className='text-center text-info m-3'>Warehouse Product list:</h3>
+          <h3 className='text-center text-info m-5'>Warehouse Product list:</h3>
           <div className="product-container">
           {
-            products.map(product=>
+            products.slice(0,6).map(product=>
               <div className='container product-card bg-white' >
                 <div className="row p-2" >
                   <div className="col-5 col-md-5 col-lg-5">
@@ -50,7 +50,7 @@ const Home = () => {
             )
           }
           </div>
-          <div className="text-center m-3 ">
+          <div className="text-center m-5">
             <button onClick={navigateToProduct} className='btn w-25' id='custom-btn'>All Products</button>
           </div>
         </div>

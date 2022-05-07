@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
@@ -9,8 +9,8 @@ import useProductDetails from '../../../Hooks/useProductDetails';
 const ProductDetail = () => {
   const {productId} = useParams();
   const [product,setProduct] = useProductDetails(productId);
-  const [user] = useAuthState(auth); 
 
+  const [user] = useAuthState(auth);
   let {_id, itemName, imgLink, description, price, quantity, supplierName} = product;
 
   const handleDelivered = (id) =>{
@@ -30,9 +30,8 @@ const ProductDetail = () => {
       })
       .then(res=>res.json())
       .then(data=>{ 
-        window.location.reload();
-        setProduct(updatedProduct);
-        
+        product.quantity = parseInt(product.quantity) - 1;
+        setProduct(product);
       }); 
 
       const myItem = {
@@ -75,8 +74,9 @@ const ProductDetail = () => {
       })
       .then(res=>res.json())
       .then(data=>{ 
-        setProduct(updatedProduct);
-        window.location.reload();
+        product.quantity = parseInt(reStock) + parseInt(quantity); 
+        setProduct(product);
+        // window.location.reload();
         alert('ReStocked successfully!!!'); 
       }); 
        

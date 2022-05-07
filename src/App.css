@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
+
+body{
+  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Raleway', sans-serif; */
+
+}
 .App {
   text-align: center;
 }
@@ -14,6 +21,7 @@
 }
 .main-body{
   height: 100vh;
+  /* background-color: red; */
 }
 
 .App-logo {
