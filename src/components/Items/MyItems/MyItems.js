@@ -26,14 +26,14 @@ const MyItems = () => {
           }
         });
 
-        for(let item of data) {
-          const newItem = data.filter(t=>t.itemName===item.itemName);
-          item.quantity = newItem.length; 
-        }
+        // for(let item of data) {
+        //   const newItem = data.filter(t=>t.itemName===item.itemName);
+        //   item.quantity = newItem.length; 
+        // }
 
-        let ara = [...new Map(data.map(item => [item['itemName'], item])).values()]
+        // let ara = [...new Map(data.map(item => [item['itemName'], item])).values()]
 
-        setItems(ara);
+        setItems(data);
       }
       catch(error){
         if(error.response.status===401 || error.response.status===403){
@@ -97,6 +97,3 @@ const MyItems = () => {
 };
 
 export default MyItems;
-
-
-// https://stackoverflow.com/questions/10541068/count-duplicates-within-an-array-of-objects

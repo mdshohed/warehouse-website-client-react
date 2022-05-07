@@ -79,6 +79,7 @@ const ProductDetail = () => {
         // window.location.reload();
         alert('ReStocked successfully!!!'); 
       }); 
+      event.target.reStock.reset(); 
        
     }
     else {
